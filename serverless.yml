@@ -1,0 +1,18 @@
+service: wanjun-assignment-3.12-cdserverless
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-northeast-1
+
+functions:
+  api:
+    handler: app.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+plugins:
+  - serverless-offline
