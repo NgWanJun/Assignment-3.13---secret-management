@@ -4,7 +4,7 @@
   "description": "Assignment 3.12 - Continuous Deployment for Serverless",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles"
+    "test": "jest --forceExit"
   },
   "author": "",
   "license": "ISC",
