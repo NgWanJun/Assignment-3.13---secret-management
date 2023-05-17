@@ -1,18 +1,20 @@
-const request = require('supertest');
-const app = require('./app');
+const { handler } = require('./app');
 
-describe('GET /', () => {
-  it('should respond with "Hello from Node!"', async () => {
-    const response = await request(app).get('/');
-    expect(response.statusCode).toBe(200);
-    expect(response.text).toBe('Hello from Node!');
-  });
-});
+describe('Lambda function handler', () => {
+  it('should return a response with status code 200 and the correct message', async () => {
+    const event = {}; // Mock the event parameter
+    const expectedResponse = {
+      statusCode: 200,
+      body: JSON.stringify(
+        {
+          message: "Hello from Node",
+        },
+        null,
+        2
+      ),
+    };
 
-describe('GET /test', () => {
-  it('should respond with "Hello from /test Node!"', async () => {
-    const response = await request(app).get('/test');
-    expect(response.statusCode).toBe(200);
-    expect(response.text).toBe('Hello from /test Node!');
+    const response = await handler(event);
+    expect(response).toEqual(expectedResponse);
   });
 });
