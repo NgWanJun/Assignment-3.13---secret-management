@@ -58,10 +58,7 @@ jobs:
     needs: deploy
 
     steps:
-      - name: Retrieve AWS Secret
-     
-steps:
-      - name: Retrieve AWS Secret
-        run: |
-          SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id wanjun --query SecretString --output text --region ap-northeast-1)
-          echo "Secret Value: $SECRET_VALUE"
+    run: |
+      export AWS_DEFAULT_REGION=ap-northeast-1
+      SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id wanjun --query SecretString --output text)
+      echo "Secret Value: $SECRET_VALUE"
