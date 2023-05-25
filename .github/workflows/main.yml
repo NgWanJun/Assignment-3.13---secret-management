@@ -59,15 +59,6 @@ jobs:
     needs: deploy
 
     steps:
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          role-to-assume: arn:aws:iam::123456789100:role/my-github-actions-role
-          aws-region: ap-northeast-1
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Retrieve AWS Secret
@@ -75,3 +66,6 @@ jobs:
           export AWS_DEFAULT_REGION=ap-northeast-1
           SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id wanjun --query SecretString --output text)
           echo "Secret Value: $SECRET_VALUE"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
