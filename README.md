@@ -7,3 +7,4 @@ Assignment 3.13 - Continuous Deployment for Serverless + Secret Management
 
 -Successful and accessible via API Gateway endpoint
 
+-Successful retrieval of secret from AWS Secrets Manager into the CI/CD Pipeline
