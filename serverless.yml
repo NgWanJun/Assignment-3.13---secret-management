@@ -1,4 +1,4 @@
-service: wanjun-assignment12-cdserverless
+service: wanjun-assignment13
 frameworkVersion: '3'
 
 provider:
